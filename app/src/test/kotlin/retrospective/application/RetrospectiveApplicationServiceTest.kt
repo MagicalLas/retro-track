@@ -4,7 +4,6 @@ import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.gherkin.Feature
 import retrospective.adapter.InMemoryRetrospectiveRepository
 import retrospective.domain.Retrospective
-import kotlin.test.assertNotNull
 import kotlin.test.assertTrue
 
 object RetrospectiveApplicationServiceTest : Spek({

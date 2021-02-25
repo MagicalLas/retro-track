@@ -1,6 +1,5 @@
 package retrospective.adapter
 
-import org.assertj.core.api.Assertions.assertThat
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.gherkin.Feature
 import retrospective.domain.Retrospective
