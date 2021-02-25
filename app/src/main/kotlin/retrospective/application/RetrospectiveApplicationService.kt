@@ -9,7 +9,7 @@ class RetrospectiveApplicationService(
         private val repository: InMemoryRetrospectiveRepository
 ) {
     fun logRetrospective(userName: String, memo: String): Retrospective {
-        val retro = Retrospective(0, userName, memo)
+        val retro = Retrospective(repository.nextId(), userName, memo)
         repository.save(retro)
         return retro
     }
