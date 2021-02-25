@@ -7,6 +7,7 @@ import retrospective.domain.RetrospectiveNotFoundError
 
 class InMemoryRetrospectiveRepository {
     private val inMemoryCache: MutableMap<Long, Retrospective> = mutableMapOf()
+    private var lastId = 0L
 
     fun findById(id: Long): Either<Retrospective, RetrospectiveNotFoundError> {
         return inMemoryCache[id].rightIfNotNull { RetrospectiveNotFoundError(id) }.swap()
@@ -20,5 +21,9 @@ class InMemoryRetrospectiveRepository {
         return inMemoryCache.values.filter {
             it.userName == userName
         }
+    }
+
+    fun nextId(): Long {
+        return lastId++
     }
 }
