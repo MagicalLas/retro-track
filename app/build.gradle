@@ -19,6 +19,8 @@ repositories {
     jcenter()
 }
 
+def arrow_version = "0.11.0"
+
 dependencies {
     // Align versions of all Kotlin components
     implementation platform('org.jetbrains.kotlin:kotlin-bom')
@@ -41,6 +43,11 @@ dependencies {
 
     // spek requires kotlin-reflect, can be omitted if already in the classpath.
     testRuntimeOnly "org.jetbrains.kotlin:kotlin-reflect:1.4.30"
+
+    // Arrow
+    implementation "io.arrow-kt:arrow-fx:$arrow_version"
+    implementation "io.arrow-kt:arrow-optics:$arrow_version"
+    implementation "io.arrow-kt:arrow-syntax:$arrow_version"
 }
 
 application {

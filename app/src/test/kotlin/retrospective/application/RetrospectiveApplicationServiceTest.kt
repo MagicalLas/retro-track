@@ -2,13 +2,16 @@ package retrospective.application
 
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.gherkin.Feature
+import retrospective.domain.Retrospective
 import kotlin.test.assertNotNull
 
 object RetrospectiveApplicationServiceTest : Spek({
     Feature("회고 기록하기") {
+        val applicationService = RetrospectiveApplicationService()
 
         Scenario("새로운 회고 기록 추가하기") {
             lateinit var memo: String
+            lateinit var loggedRetro: Retrospective
             val userName = "LasWonho"
 
             Given("올바른 회고 기록이 주어졌을 때") {
