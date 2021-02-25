@@ -15,4 +15,10 @@ class InMemoryRetrospectiveRepository {
     fun save(retro: Retrospective) {
         inMemoryCache[retro.id] = retro
     }
+
+    fun findByUserName(userName: String): List<Retrospective> {
+        return inMemoryCache.values.filter {
+            it.userName == userName
+        }
+    }
 }
