@@ -17,4 +17,8 @@ class RetrospectiveApplicationService(
     fun findSpecificRetrospective(id: Long): Either<Retrospective, RetrospectiveNotFoundError> {
         return repository.findById(id)
     }
+
+    fun findMyAllRetrospective(userName: String): List<Retrospective> {
+        return repository.findByUserName(userName)
+    }
 }
