@@ -1,7 +1,4 @@
 package retrospective.domain
 
-class Retrospective {
-    fun getId(): Long {
-        return 0
-    }
+class Retrospective(val id: Long, val userName: String, memo: String) {
 }
