@@ -5,7 +5,9 @@ import retrospective.adapter.InMemoryRetrospectiveRepository
 import retrospective.domain.Retrospective
 import retrospective.domain.RetrospectiveNotFoundError
 
-class RetrospectiveApplicationService(private val repository: InMemoryRetrospectiveRepository) {
+class RetrospectiveApplicationService(
+        private val repository: InMemoryRetrospectiveRepository
+) {
     fun logRetrospective(userName: String, memo: String): Retrospective {
         val retro = Retrospective(0, userName, memo)
         repository.save(retro)
