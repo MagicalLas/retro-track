@@ -39,6 +39,9 @@ dependencies {
     // Use the Kotlin test library.
     testImplementation 'org.jetbrains.kotlin:kotlin-test'
 
+    // Use strikt for testing.
+    testImplementation 'io.strikt:strikt-core:0.28.0'
+
     // Use the Kotlin JUnit integration.
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
 
