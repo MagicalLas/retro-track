@@ -6,6 +6,7 @@ import retrospective.domain.Retrospective
 import strikt.api.expectThat
 import strikt.assertions.contains
 import strikt.assertions.hasSize
+import strikt.assertions.isTrue
 
 object InMemoryRetrospectiveRepositoryTest: Spek({
     Feature("save retrospective") {
@@ -38,6 +39,17 @@ object InMemoryRetrospectiveRepositoryTest: Spek({
             }
             Then("repository 에서 특정 유저가 저장한 회고를 모두 찾을 수 있다") {
                 expectThat(foundRetroList).hasSize(1).contains(retro)
+            }
+        }
+        Scenario("새로운 아이디 생성하기") {
+            val repository = InMemoryRetrospectiveRepository()
+            var nextId: Long = 0
+
+            When("새로운 아이디를 얻는 경우") {
+                nextId = repository.nextId()
+            }
+            Then("새로운 아이디로는 retrospective 를 찾을 수 없다") {
+                expectThat(repository.findById(nextId).isRight()).isTrue()
             }
         }
     }
