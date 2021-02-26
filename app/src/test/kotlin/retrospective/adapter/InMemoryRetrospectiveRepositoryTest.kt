@@ -3,6 +3,7 @@ package retrospective.adapter
 import org.spekframework.spek2.Spek
 import org.spekframework.spek2.style.gherkin.Feature
 import retrospective.domain.Retrospective
+import retrospective.domain.RetrospectiveRepository
 import strikt.api.expectThat
 import strikt.assertions.contains
 import strikt.assertions.hasSize
@@ -12,7 +13,7 @@ object InMemoryRetrospectiveRepositoryTest: Spek({
     Feature("save retrospective") {
         Scenario("회고 저장하기") {
             lateinit var retro: Retrospective
-            val repository = InMemoryRetrospectiveRepository()
+            val repository: RetrospectiveRepository = InMemoryRetrospectiveRepository()
 
             Given("정상적인 회고가 주어졌을 때") {
                 retro = Retrospective(0L, "Las", "우유를 먹으면 배가 아파")

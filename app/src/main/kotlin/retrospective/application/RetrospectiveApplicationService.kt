@@ -1,12 +1,12 @@
 package retrospective.application
 
 import arrow.core.Either
-import retrospective.adapter.InMemoryRetrospectiveRepository
 import retrospective.domain.Retrospective
 import retrospective.domain.RetrospectiveNotFoundError
+import retrospective.domain.RetrospectiveRepository
 
 class RetrospectiveApplicationService(
-        private val repository: InMemoryRetrospectiveRepository
+        private val repository: RetrospectiveRepository
 ) {
     fun logRetrospective(userName: String, memo: String): Retrospective {
         val retro = Retrospective(repository.nextId(), userName, memo)

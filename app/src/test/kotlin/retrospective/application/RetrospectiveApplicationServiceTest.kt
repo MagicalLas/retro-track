@@ -7,7 +7,6 @@ import retrospective.domain.Retrospective
 import strikt.api.expectThat
 import strikt.assertions.contains
 import strikt.assertions.hasSize
-import strikt.assertions.isNotEmpty
 import kotlin.test.assertTrue
 
 object RetrospectiveApplicationServiceTest : Spek({

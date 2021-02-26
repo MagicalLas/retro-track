@@ -4,26 +4,27 @@ import arrow.core.Either
 import arrow.core.rightIfNotNull
 import retrospective.domain.Retrospective
 import retrospective.domain.RetrospectiveNotFoundError
+import retrospective.domain.RetrospectiveRepository
 
-class InMemoryRetrospectiveRepository {
+class InMemoryRetrospectiveRepository: RetrospectiveRepository {
     private val inMemoryCache: MutableMap<Long, Retrospective> = mutableMapOf()
     private var lastId = 0L
 
-    fun findById(id: Long): Either<Retrospective, RetrospectiveNotFoundError> {
+    override fun findById(id: Long): Either<Retrospective, RetrospectiveNotFoundError> {
         return inMemoryCache[id].rightIfNotNull { RetrospectiveNotFoundError(id) }.swap()
     }
 
-    fun save(retro: Retrospective) {
+    override fun save(retro: Retrospective) {
         inMemoryCache[retro.id] = retro
     }
 
-    fun findByUserName(userName: String): List<Retrospective> {
+    override fun findByUserName(userName: String): List<Retrospective> {
         return inMemoryCache.values.filter {
             it.userName == userName
         }
     }
 
-    fun nextId(): Long {
+    override fun nextId(): Long {
         return lastId++
     }
 }
